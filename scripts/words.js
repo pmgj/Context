@@ -1,0 +1,1 @@
+export default ["amor", "cama", "bola", "graveto", "somar"];
