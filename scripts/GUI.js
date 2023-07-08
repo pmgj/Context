@@ -6,6 +6,7 @@ class GUI {
         this.game = null;
         this.format = new Intl.NumberFormat('en-us', { minimumFractionDigits: 3 });
         this.tbody = document.querySelector("tbody");
+        this.msg = document.querySelector("#message");
     }
     startGame() {
         this.game = new Context(10);
@@ -22,12 +23,12 @@ class GUI {
         this.addWordToTable(word, obj.distance);
         switch (obj.endOfGame) {
             case EndOfGame.LOSE:
-                alert(`You lose!`);
+                this.msg.textContent = `You lose!`;
                 this.addWordToTable(obj.secretWord, 1);
                 this.gameOver();
                 break;
             case EndOfGame.WIN:
-                alert(`You win!`);
+                this.msg.textContent = `You win!`;
                 this.gameOver();
                 break;
             case EndOfGame.NONE:
@@ -37,6 +38,7 @@ class GUI {
     gameOver() {
         onkeyup = undefined;
         setTimeout(() => {
+            this.msg.textContent = "";
             this.tbody.innerHTML = "";
             this.startGame();
         }, 5000);

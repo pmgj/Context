@@ -5,7 +5,8 @@ import EndOfGame from "./EndOfGame.js";
 export default class Context {
     constructor(tries) {
         this.tries = tries;
-        let index = Math.floor(Math.random() * words.length);
+        let temp = words.filter(w => w.length > 2 && !w.includes(" ") && !w.includes("-"));
+        let index = Math.floor(Math.random() * temp.length);
         this.secretWord = words[index];
     }
     play(word) {
